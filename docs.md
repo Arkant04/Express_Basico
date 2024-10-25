@@ -53,3 +53,33 @@ app.post('/enviar', (req, res) => {
         <button type="submit">Enviar</button>
       </form>
 ```
+
+## fetch api
+
+Cuando queremos hacer algo con la repuesta de mi backend debemoshacer hacer lo siguiente en el frontend:
+
+```html
+ <p id="mensaje"></p>
+    <script>
+        const parrafo = document.getElementById("mensaje")
+        fetch('/json', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ nombre: 'Ale' })
+    })
+    .then(response => response.text())
+    .then(data => parrafo.textContent = data);
+    </script>
+```
+
+En el backend:
+
+```js
+app.use(express.json());
+app.post('/json', (req, res) => {
+    const nombre = req.body.nombre;
+    res.send(`Hola, ${nombre}!`);
+});
+```

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/usuario/123">Ver Usuario</a>
+    <p id="respuesta"></p>
+    <script>
+        const nombre = "Alef"
+        const parrafo = document.getElementById("respuesta")
+        fetch(`/usuario/${nombre}/`)
+     .then(response => response.text())
+     .then(data => parrafo.textContent = data);
+    </script>
+</body>
+</html>
