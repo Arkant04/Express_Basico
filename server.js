@@ -24,10 +24,22 @@ app.post('/json', (req, res) => {
     res.send(`Hola, ${nombre}!`);
 });
 
+app.get('/html', (req, res)=> {
+    res.send('<a href="https://youtu.be/dQw4w9WgXcQ">Bloodborne Gratis para pc</a>')
+})
+
+app.get('/enviarArchivos', (req, res)=> {
+    res.sendFile(path.join(__dirname, 'public', 'all-might.gif'))
+})
+
 app.get('/usuario/:id', (req, res) => {
     const id = req.params.id;
     res.send(`Usuario ID: ${id}`);
 });
+
+app.get('/status', (req, res)=> {
+    res.status(200).send("Entro bien")
+})
 
 app.listen(3000, () => {
     console.log('Servidor escuchando en el puerto 3000');
